@@ -1,3 +1,5 @@
+/* Eudes Medeiros - 01C
+   Marcus Vinícius - 01C */
 var yi = 0;
 var xj = 320;
 var yj = 450;
