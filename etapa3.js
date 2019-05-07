@@ -1,3 +1,5 @@
+/* Eudes Medeiros - 01C
+   Marcus Vinícius - 01C */
 var yi = 0;
 var xj = 320;
 var yj = 450;
@@ -35,7 +37,7 @@ function draw() {
  			 yi=yi+5;
 			 if(yi > width){
 			yi = random(-300,-50);
-             }
+             	}
 
   
 }
