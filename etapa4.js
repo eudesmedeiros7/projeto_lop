@@ -1,5 +1,3 @@
-/* Eudes Medeiros - 01C
-   Marcus Vinícius - 01C */
 var yi = 0;
 var xj = 320;
 var yj = 450;
@@ -10,7 +8,7 @@ var yd;
 function setup() {
 	createCanvas(640, 480);
   frameRate(60);
-  		xj = 50
+  		xj = 60
   		xd = xj;
   		
   		yj = 100
@@ -26,12 +24,12 @@ function draw() {
       }
       
   if (disparo){
-  		xd = xd +10;
+  	 xd = xd +10;
+  
+     if (xd > width){
+  	    disparo = false;
+     }
   }
-  if (yd > width){
-  	disparo = false;
-  }
- 
   
   
   
