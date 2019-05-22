@@ -1,6 +1,6 @@
 //Eudes Medeiros - 01C//
 //Marcus Vinicius - 01C//
-var xi = 360;
+var xi = 660;
 var yi = 320;
 var xj = 320;
 var yj = 450;
@@ -11,7 +11,11 @@ var vidas=3;
 var pontos=0;
 var dificuldade=1;
 var yi2 = 60;
-var xi2 = 360;
+var xi2 = 660;
+var yi3 = 110;
+var xi3 = 660;
+var yi4 = 140;
+var xi4 = 660;
 
 function setup() {
 	createCanvas(640, 480);
@@ -19,7 +23,7 @@ function setup() {
   		xj = 40;
   		xd = xj;
   		
-  		yj = 100;
+  		yj = 250;
         yd = yj;
 
 }
@@ -73,16 +77,28 @@ function draw() {
     }
   
   rect(xi,yi,30,30);
- 			 xi=xi-7;
+ 			 xi=xi-5;
 			 if(xi < -30){
 			    xi = 665;
                 yi = random(95, 450)
              }
   rect(xi2,yi2,30,30);
- 			 xi2=xi2-10;
+ 			 xi2=xi2-7;
 			 if(xi2 < -30){
 			    xi2 = 665;
                 yi2 = random(95, 450)
+             }
+  rect(xi3,yi3,30,30);
+ 			 xi3=xi3-10;
+			 if(xi3 < -30){
+			    xi3 = 665;
+                yi3 = random(95, 450)
+             }
+  rect(xi4,yi4,30,30);
+ 			 xi4=xi4-13;
+			 if(xi4 < -30){
+			    xi4 = 665;
+                yi4 = random(95, 450)
              }
   //colisão teste
   //collideRectCircle(xi, yi, 30, 30, xj, yj, 50)
