@@ -1,7 +1,5 @@
 //Eudes Medeiros - 01C//
 //Marcus Vinicius - 01C//
-var xi = 660;
-var yi = 320;
 var xj = 320;
 var yj = 450;
 var disparo = false;
@@ -10,13 +8,8 @@ var yd;
 var vidas=3;
 var pontos=0;
 var dificuldade=1;
-var yi2 = 60;
-var xi2 = 660;
-var yi3 = 110;
-var xi3 = 660;
-var yi4 = 140;
-var xi4 = 660;
-
+var xi=[];
+var yi=[];
 function setup() {
 	createCanvas(640, 480);
     frameRate(60)
@@ -25,7 +18,10 @@ function setup() {
   		
   		yj = 250;
         yd = yj;
-
+    for(i=0;i<4;i++){
+      xi[i] = 625;
+      yi[i] = random(95, 455);
+  }
 }
 function draw() {
   if (keyIsDown(CONTROL) && (! disparo)){
@@ -76,30 +72,40 @@ function draw() {
   ellipse(xd, yd, 8, 8);
     }
   
-  rect(xi,yi,30,30);
- 			 xi=xi-5;
-			 if(xi < -30){
-			    xi = 665;
-                yi = random(95, 210)
-             }
-  rect(xi2,yi2,30,30);
- 			 xi2=xi2-10;
-			 if(xi2 < -30){
-			    xi2 = 665;
-                yi2 = random(95, 210)
-             }
-  rect(xi3,yi3,30,30);
- 			 xi3=xi3-7;
-			 if(xi3 < -30){
-			    xi3 = 665;
-                yi3 = random(210, 455)
-             }
-  rect(xi4,yi4,30,30);
- 			 xi4=xi4-13;
-			 if(xi4 < -30){
-			    xi4 = 665;
-                yi4 = random(210, 455)
-             }
-  //colisão teste
-  //collideRectCircle(xi, yi, 30, 30, xj, yj, 50)
+  for (i=0; i<4; i++){
+     rect(xi[i], yi[i], 30, 30)
+  }
+  for (i=0; i<4; i++){
+    if (i==0){
+       xi[i]=xi[i]-15;
+        if(xi[i] < -30){
+		  xi[i] = 665;
+          yi[i] = random(95, 195)
+        }
+    }else{
+      if (i==1){
+        xi[i]=xi[i]-10;
+        if(xi[i] < -30){
+		  xi[i] = 665;
+          yi[i] = random(95, 195)
+        }
+      }else{
+        if (i==2){
+          xi[i]=xi[i]-7;
+          if(xi[i] < -30){
+		    xi[i] = 665;
+            yi[i] = random(225, 455)
+          }
+        }else{
+          if (i==3){
+            xi[i]=xi[i]-13;
+            if(xi[i] < -30){
+		      xi[i] = 665;
+              yi[i] = random(225, 455)
+            }
+          } 
+        }
+      }
+    }
+  }
 }
