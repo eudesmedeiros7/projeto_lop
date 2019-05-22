@@ -68,9 +68,9 @@ function draw() {
     rect(-1, 40, 645, 12)
     fill(900,700,900);
     ellipse(xj, yj, 50, 50);
-    //text(mouseX, 10, 70);
-    //text(mouseY, 70, 70);
-    //fill (255, 255, 255)
+    text(mouseX, 10, 70);
+    text(mouseY, 70, 70);
+    fill (255, 255, 255)
   
   if (disparo){
   ellipse(xd, yd, 8, 8);
@@ -80,25 +80,25 @@ function draw() {
  			 xi=xi-5;
 			 if(xi < -30){
 			    xi = 665;
-                yi = random(95, 450)
+                yi = random(95, 210)
              }
   rect(xi2,yi2,30,30);
- 			 xi2=xi2-7;
+ 			 xi2=xi2-10;
 			 if(xi2 < -30){
 			    xi2 = 665;
-                yi2 = random(95, 450)
+                yi2 = random(95, 210)
              }
   rect(xi3,yi3,30,30);
- 			 xi3=xi3-10;
+ 			 xi3=xi3-7;
 			 if(xi3 < -30){
 			    xi3 = 665;
-                yi3 = random(95, 450)
+                yi3 = random(210, 455)
              }
   rect(xi4,yi4,30,30);
  			 xi4=xi4-13;
 			 if(xi4 < -30){
 			    xi4 = 665;
-                yi4 = random(95, 450)
+                yi4 = random(210, 455)
              }
   //colisão teste
   //collideRectCircle(xi, yi, 30, 30, xj, yj, 50)
