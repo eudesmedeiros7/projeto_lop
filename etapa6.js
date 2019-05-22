@@ -43,9 +43,9 @@ function draw() {
   
   
   if (keyIsDown(UP_ARROW))
-		yj-=7
+		yj-=6
   if (keyIsDown(DOWN_ARROW))
-		yj+=7
+    yj+=6
   if (xj>=640)
 		xj = 0;
   if (yj>=450)
@@ -77,14 +77,14 @@ function draw() {
   }
   for (i=0; i<4; i++){
     if (i==0){
-       xi[i]=xi[i]-15;
+       xi[i]=xi[i]-6;
         if(xi[i] < -30){
 		  xi[i] = 665;
           yi[i] = random(95, 195)
         }
     }else{
       if (i==1){
-        xi[i]=xi[i]-10;
+        xi[i]=xi[i]-11;
         if(xi[i] < -30){
 		  xi[i] = 665;
           yi[i] = random(95, 195)
@@ -98,7 +98,7 @@ function draw() {
           }
         }else{
           if (i==3){
-            xi[i]=xi[i]-13;
+            xi[i]=xi[i]-10;
             if(xi[i] < -30){
 		      xi[i] = 665;
               yi[i] = random(225, 455)
@@ -110,7 +110,7 @@ function draw() {
   }
   //COLISÃO - ETAPA 6
 	for(i=0; i<4; i++){
-		if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 30)){
+		if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
 			alert("Colisão");
 		}
 	}
