@@ -108,10 +108,3 @@ function draw() {
       }
     }
   }
-  //COLISÃO - ETAPA 6
-	for(i=0; i<4; i++){
-		if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 30)){
-			alert("Colisão");
-		}
-	}
-}
