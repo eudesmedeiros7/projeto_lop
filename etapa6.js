@@ -113,6 +113,15 @@ function draw() {
 		if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
 			xj = 320;
 			yj = 450;
+			vidas--;
+			if(vidas==0){
+				//Tela do game over
+			}
+		}
+		if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25)){// Trocar coordenadas do jogador pelo do tiro
+			xd = xj;
+			yd = yj;
+			pontos++;
 		}
 	}
 }
