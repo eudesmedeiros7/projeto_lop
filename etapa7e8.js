@@ -11,6 +11,45 @@ var dificuldade=1;
 var xi=[];
 var yi=[];
 var tela = 2;
+
+function calculaY(){
+	// geração de cada retangulo(obstáculo) em partes da tela(4 partes)
+	// criação de uma função a fim de otimizar o código
+		for (i=0; i<4; i++){
+		  if (i==0){
+			 xi[i]=xi[i]-7.6;
+			  if(xi[i] < -30){
+			xi[i] = 665;
+				yi[i] = random(55, 55+105-35)
+			  }
+		  }else{
+			if (i==1){
+			  xi[i]=xi[i]-8;
+			  if(xi[i] < -30){
+			xi[i] = 665;
+				yi[i] = random(105+55, 55+2*105-35)
+			  }
+			}else{
+			  if (i==2){
+				xi[i]=xi[i]-6.5;
+				if(xi[i] < -30){
+			  xi[i] = 665;
+				  yi[i] = random(210+55, 55+3*105-35)
+				}
+			  }else{
+				if (i==3){
+				  xi[i]=xi[i]-7;
+				  if(xi[i] < -30){
+				xi[i] = 665;
+					yi[i] = random( 315+55, 55+4*105-35)
+				  }
+				} 
+			  }
+			}
+		  }
+		}
+	
+}
   function setup() {
     createCanvas(640, 480);
       frameRate(60)
@@ -18,14 +57,15 @@ var tela = 2;
         xd = xj;
         
         yj = 250;
-          yd = yj;
+        yd = yj;
       for(i=0;i<4;i++){
-        xi[i] = 625;
-        yi[i] = random(95, 455);
-    }
+        xi[i] = -50;
+	   }
+    calculaY();
   }
   function draw() {
 	  if (tela==1){
+	      // tela do game over 
 		  background(0);
 		  fill(random(0,255),random(0,255),random(0,255))
 		  textSize(60);
@@ -39,6 +79,7 @@ var tela = 2;
 		  text('Press F5 to restart', 320, 280);
 	  }
 	  if(tela == 2){
+		  //tela do jogo logo após abrir
 		if (keyIsDown(CONTROL) && (! disparo)){
 			disparo = true;
 			xd = xj;
@@ -56,7 +97,7 @@ var tela = 2;
 		}
 		
 		
-		
+		// controle do personagem (cima em baixo)
 		if (keyIsDown(UP_ARROW))
 		  yj-=6
 		if (keyIsDown(DOWN_ARROW))
@@ -83,46 +124,18 @@ var tela = 2;
 		  text(mouseX, 10, 70);
 		  text(mouseY, 70, 70);
 		if (disparo){
+			//elipse disparada
 		ellipse(xd, yd, 8, 8);
 		  }
 		
 		for (i=0; i<4; i++){
+			// geração de 4 retangulos com cores aleatórias
 			fill(random(0,255),random(0,255),random(0,255))
 			rect(xi[i], yi[i], 30, 30)
 		}
-		for (i=0; i<4; i++){
-		  if (i==0){
-			 xi[i]=xi[i]-5;
-			  if(xi[i] < -30){
-			xi[i] = 665;
-				yi[i] = random(95, 195)
-			  }
-		  }else{
-			if (i==1){
-			  xi[i]=xi[i]-6;
-			  if(xi[i] < -30){
-			xi[i] = 665;
-				yi[i] = random(95, 195)
-			  }
-			}else{
-			  if (i==2){
-				xi[i]=xi[i]-6.5;
-				if(xi[i] < -30){
-			  xi[i] = 665;
-				  yi[i] = random(225, 450)
-				}
-			  }else{
-				if (i==3){
-				  xi[i]=xi[i]-7;
-				  if(xi[i] < -30){
-				xi[i] = 665;
-					yi[i] = random(225, 450)
-				  }
-				} 
-			  }
-			}
-		  }
-		}
+		// geração de cada retangulo(obstáculo) em partes da tela(2 partes)
+		calculaY();
+		
 	  //COLISÃO - ETAPA 6
 		for(i=0; i<4; i++){
 			if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
@@ -137,12 +150,14 @@ var tela = 2;
 		  }
 		  vidas--;
 				if(vidas==0){
+					// Fim do jogo, quando vidas = 0, game over
 					tela = 1;
 				}
 			}
-			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25)){// Trocar coordenadas do jogador pelo do tiro
-		  disparo = false;
-		  xd = xj;
+			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25)){
+				// Disparos "multiplós se acerto verdadeiro e contagem de pontos para cada acerto
+				disparo = false;
+				xd = xj;
 				yd = yj;
 				pontos++;
 			}
