@@ -1,8 +1,6 @@
 /*Eudes Medeiros - 01C
   Marcus Vinícius - 01C*/
-/*Eudes Medeiros - 01C
-  Marcus Vinícius - 01C*/
-  var xj = 320;
+var xj = 320;
   var yj = 450;
   var disparo = false;
   var xd;
@@ -93,17 +91,17 @@
           }
         }else{
           if (i==2){
-            xi[i]=xi[i]-7;
+            xi[i]=xi[i]-6.5;
             if(xi[i] < -30){
           xi[i] = 665;
-              yi[i] = random(225, 455)
+              yi[i] = random(225, 450)
             }
           }else{
             if (i==3){
-              xi[i]=xi[i]-8;
+              xi[i]=xi[i]-7;
               if(xi[i] < -30){
             xi[i] = 665;
-                yi[i] = random(225, 455)
+                yi[i] = random(225, 450)
               }
             } 
           }
@@ -116,7 +114,12 @@
 			xj = 40;
       yj = 255;
       xi[i] = 665;
-      yi[i] = random(xi[i],yi[i])
+      if(i<2){
+      yi[i] = random(95,195);
+      }
+      else{
+        yi[i] = random(225,450)
+      }
 			vidas--;
 			if(vidas==0){                                                                        
         //game over
