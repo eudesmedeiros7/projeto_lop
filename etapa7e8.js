@@ -16,7 +16,7 @@ function calculaY(){
 	// geração de cada retangulo(obstáculo) em partes da tela(4 partes)
 	// criação de uma função a fim de otimizar o código
 		for (i=0; i<4; i++){
-		  if (i==0){
+	    if (i==0){
 			 xi[i]=xi[i]-7.6;
 			  if(xi[i] < -30){
 			xi[i] = 665;
@@ -48,7 +48,6 @@ function calculaY(){
 			}
 		  }
 		}
-	
 }
   function setup() {
     createCanvas(640, 480);
@@ -64,7 +63,7 @@ function calculaY(){
     calculaY();
   }
   function draw() {
-	  if (tela==1){
+	  if (tela==4){
 	      // tela do game over 
 		  background(0);
 		  fill(random(0,255),random(0,255),random(0,255))
@@ -102,16 +101,12 @@ function calculaY(){
 		  yj-=6
 		if (keyIsDown(DOWN_ARROW))
 		  yj+=6
-		if (xj>=640)
-		  xj = 0;
+      if( yj<73){
+        yj=73
+      }
 		if (yj>=450)
 		  yj=450;
-		if (xj<0)
-			xj = 640;
-		if (yj<0)
-		  yj = 480;
-		
-		background(20)
+		  background(20)
 		//Desenhos do cenario//
 		  fill (255, 255, 255)
 		  textSize(32);
@@ -120,7 +115,7 @@ function calculaY(){
 		  text('Dificuldade: '+dificuldade, 443, 30);
 		  rect(-1, 40, 645, 12)
 		  fill(255,255,255);
-		  ellipse(xj, yj, 50, 50);
+		  ellipse(xj, yj, 40, 40);
 		  text(mouseX, 10, 70);
 		  text(mouseY, 70, 70);
 		if (disparo){
@@ -137,21 +132,42 @@ function calculaY(){
 		calculaY();
 		
 	  //COLISÃO - ETAPA 6
-		for(i=0; i<4; i++){
-			if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
+	for(i=0; i<4; i++){
+	if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
 				xj = 40;
 				yj = 255;
 				xi[i] = 665;
-		  if(i<2){
-		  yi[i] = random(95,195);
-		  }
-		  else{
-			yi[i] = random(225,450)
-		  }
-		  vidas--;
+        if (yi[i]==0){
+          xi[i]=xi[i]-7.6;
+           if(xi[i] < -30){
+           yi[i] = random(55, 55+105-35)
+           }
+         }else{
+         if (yi[i]==1){
+           xi[i]=xi[i]-8;
+           if(xi[i] < -30){
+           yi[i] = random(105+55, 55+2*105-35)
+           }
+         }else{
+           if (yi[i]==2){
+           xi[i]=xi[i]-6.5;
+           if(xi[i] < -30){
+             yi[i] = random(210+55, 55+3*105-35)
+           }
+           }else{
+           if (yi[i]==3){
+             xi[i]=xi[i]-7;
+             if(xi[i] < -30){
+             yi[i] = random( 315+55, 55+4*105-35)
+             }
+           } 
+           }
+         }
+         }
+		    vidas--;
 				if(vidas==0){
 					// Fim do jogo, quando vidas = 0, game over
-					tela = 1;
+					tela = 4;
 				}
 			}
 			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25)){
