@@ -1,5 +1,7 @@
 /*Eudes Medeiros - 01C
   Marcus Vinícius - 01C*/
+/*Eudes Medeiros - 01C
+  Marcus Vinícius - 01C*/
 var xj = 320;
 var yj = 450;
 var disparo = false;
@@ -12,6 +14,8 @@ var xi=[];
 var yi=[];
 var tela = 1;
 var velo = 0;
+
+
 
 function calculaY(){
 	// geração de cada retangulo(obstáculo) em partes da tela(4 partes)
@@ -123,7 +127,7 @@ function calculaY(){
 		
 		for (i=0; i<4; i++){
 			// geração de 4 retangulos com cores aleatórias
-			fill(random(0,255),random(0,255),random(0,255))
+			//fill(random(0,255),random(0,255),random(0,255))
 			rect(xi[i], yi[i], 30, 30)
 		}
 		// geração de cada retangulo(obstáculo) em partes da tela(2 partes)
@@ -131,7 +135,7 @@ function calculaY(){
 		
 	  //COLISÃO - ETAPA 6
 		for(i=0; i<4; i++){
-			if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 25)){
+			if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 40)){
 				xj = 40;
 				yj = 255;
 				xi[i] = 665;
@@ -168,7 +172,7 @@ function calculaY(){
 					tela = 4;
 				}
 			}
-			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25)){
+			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25) && disparo==true){
 				// Disparos "multiplós se acerto verdadeiro e contagem de pontos para cada acerto
 				disparo = false;
 				xd = xj;
