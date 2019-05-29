@@ -1,7 +1,5 @@
 /*Eudes Medeiros - 01C
   Marcus Vinícius - 01C*/
-/*Eudes Medeiros - 01C
-  Marcus Vinícius - 01C*/
 var xj = 320;
 var yj = 450;
 var disparo = false;
