@@ -11,45 +11,47 @@ var dificuldade=1;
 var xi=[];
 var yi=[];
 var tela = 1;
-var velo = 0;
+var velo = 1;
 
-
+function abre(){
+	if (i==0){
+		xi[i]=xi[i]-(velo+5.6);
+		 if(xi[i] < -30){
+	 xi[i] = 665;
+		 yi[i] = random(55, 55+105-35)
+		 }
+	 }else{
+	 if (i==1){
+		 xi[i]=xi[i]-(velo+7);
+		 if(xi[i] < -30){
+	 xi[i] = 665;
+		 yi[i] = random(105+55, 55+2*105-35)
+		 }
+	 }else{
+		 if (i==2){
+		 xi[i]=xi[i]-(velo+6);
+		 if(xi[i] < -30){
+		 xi[i] = 665;
+			 yi[i] = random(210+55, 55+3*105-35)
+		 }
+		 }else{
+		 if (i==3){
+			 xi[i]=xi[i]-(velo+6.5);
+			 if(xi[i] < -30){
+		 xi[i] = 665;
+			 yi[i] = random( 315+55, 55+4*105-35)
+			 }
+		 } 
+		 }
+	 }
+	 }
+}
 
 function calculaY(){
 	// geração de cada retangulo(obstáculo) em partes da tela(4 partes)
 	// criação de uma função a fim de otimizar o código
 		for (i=0; i<4; i++){
-	    if (i==0){
-			 xi[i]=xi[i]-7.6;
-			  if(xi[i] < -30){
-			xi[i] = 665;
-				yi[i] = random(55, 55+105-35)
-			  }
-		  }else{
-			if (i==1){
-			  xi[i]=xi[i]-8;
-			  if(xi[i] < -30){
-			xi[i] = 665;
-				yi[i] = random(105+55, 55+2*105-35)
-			  }
-			}else{
-			  if (i==2){
-				xi[i]=xi[i]-6.5;
-				if(xi[i] < -30){
-			  xi[i] = 665;
-				  yi[i] = random(210+55, 55+3*105-35)
-				}
-			  }else{
-				if (i==3){
-				  xi[i]=xi[i]-7;
-				  if(xi[i] < -30){
-				xi[i] = 665;
-					yi[i] = random( 315+55, 55+4*105-35)
-				  }
-				} 
-			  }
-			}
-		  }
+	    abre();
 		}
 }
   function setup() {
@@ -124,59 +126,31 @@ function calculaY(){
 		  }
 		
 		for (i=0; i<4; i++){
-			// geração de 4 retangulos com cores aleatórias
-			//fill(random(0,255),random(0,255),random(0,255))
+			// geração de 4 retangulos
 			rect(xi[i], yi[i], 30, 30)
 		}
-		// geração de cada retangulo(obstáculo) em partes da tela(2 partes)
+		// geração de cada retangulo(obstáculo) em partes da tela(4 partes)
 		calculaY();
-		
-	  //COLISÃO - ETAPA 6
+	  //COLISÃO
 		for(i=0; i<4; i++){
 			if(collideRectCircle(xi[i], yi[i], 30, 30, xj, yj, 40)){
 				xj = 40;
 				yj = 255;
 				xi[i] = 665;
-        if (yi[i]==0){
-          xi[i]=xi[i]-7.6;
-           if(xi[i] < -30){
-           yi[i] = random(55, 55+105-35)
-           }
-         }else{
-         if (yi[i]==1){
-           xi[i]=xi[i]-8;
-           if(xi[i] < -30){
-           yi[i] = random(105+55, 55+2*105-35)
-           }
-         }else{
-           if (yi[i]==2){
-           xi[i]=xi[i]-6.5;
-           if(xi[i] < -30){
-             yi[i] = random(210+55, 55+3*105-35)
-           }
-           }else{
-           if (yi[i]==3){
-             xi[i]=xi[i]-7;
-             if(xi[i] < -30){
-             yi[i] = random( 315+55, 55+4*105-35)
-             }
-           } 
-           }
-         }
-         }
-		    vidas--;
+        abre();
+				vidas--;
 				if(vidas==0){
-					// Fim do jogo, quando vidas = 0, game over
+					// Fim do jogo
 					tela = 4;
 				}
 			}
-			if(collideRectCircle(xi[i], yi[i], 30, 30, xd, yd, 25) && disparo==true){
+			if(collideRectCircle(xi[i], yi[i], 30, 30 , xd, yd,8) && disparo==true){
 				// Disparos "multiplós se acerto verdadeiro e contagem de pontos para cada acerto
 				disparo = false;
 				xd = xj;
 				yd = yj;
 				pontos++;
+				}
 			}
 		}
 	}
-  }
